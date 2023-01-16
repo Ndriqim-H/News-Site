@@ -3,10 +3,11 @@
     
     // Sticky Navbar
     $(window).scroll(function () {
+        debugger;
         if ($(this).scrollTop() > 150) {
-            $('.nav-bar').addClass('nav-sticky');
+            $('.navbar').addClass('nav-sticky');
         } else {
-            $('.nav-bar').removeClass('nav-sticky');
+            $('.navbar').removeClass('nav-sticky');
         }
     });
     

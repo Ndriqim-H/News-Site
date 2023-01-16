@@ -7,82 +7,325 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/News_Site.styles.css" asp-append-version="true" />
+    <link href="~/lib/slick/slick.css" rel="stylesheet">
+    <style>
+        #page-container {
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body {
+            /*Line 1*/
+            display: flex;
+            /*Line 2*/
+            flex-direction: column;
+            /*Line 3*/
+            min-height: 100vh;
+        }
+
+        .wrapper {
+            /*Line 4*/
+            flex: 1;
+        }
+
+        h6 {
+            display: block;
+            font-size: 0.67em;
+            margin-block-start: 2.33em;
+            margin-block-end: 2.33em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            font-weight: bold;
+        }
+
+        .h6, h6 {
+            font-size: 1rem;
+        }
+
+        .footer-title {
+            margin-bottom: 30px;
+        }
+
+        .footer-links {
+            padding: 50px 0 0 0;
+            color: #ffff;
+        }
+
+        .footer1 {
+            position: relative;
+            background-color: #C70202;
+            color: #ffff;
+            bottom: 0;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            width: 100%
+        }
+
+
+
+        .d-block {
+            display: block !important;
+        }
+
+        .font-serif {
+            font-family: "Baker", "Fraunces", serif;
+        }
+
+        .logo {
+            width: 140px;
+            padding: 0px 10px 0px 30px;
+            float: left;
+        }
+
+        .text-blue {
+            color: #003366 !important;
+        }
+
+        .logo-footer {
+            width: 50%;
+            position: absolute;
+            top: 10%;
+            right: -5%;
+            opacity: 0.7;
+        }
+
+        .footer-bottom {
+            position: relative;
+            padding: 25px 0;
+            /* background: #000000; */
+        }
+
+        .list-unstyled {
+            padding-left: 0;
+            list-style: none;
+        }
+    </style>
 </head>
-<body>
+<body style="background-color: #ffff">
     <header>
 
         <!-- Top Bar Start -->
         @*<div class="top-bar">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="tb-contact">
-                            <p><i class="fas fa-envelope"></i>info@mail.com</p>
-                            <p><i class="fas fa-phone-alt"></i>+012 345 6789</p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="tb-contact">
+                                <p><i class="fas fa-envelope"></i>info@mail.com</p>
+                                <p><i class="fas fa-phone-alt"></i>+012 345 6789</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="tb-menu">
-                            <a href="">About</a>
-                            <a href="">Privacy</a>
-                            <a href="">Terms</a>
-                            <a href="">Contact</a>
+                        <div class="col-md-6">
+                            <div class="tb-menu">
+                                <a href="">About</a>
+                                <a href="">Privacy</a>
+                                <a href="">Terms</a>
+                                <a href="">Contact</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>*@
+            </div>*@
         <!-- Top Bar Start -->
         <!-- Brand Start -->
         @*<div class="brand">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-3 col-md-4">
-                        <div class="b-logo">
-                            <a href="index.html">
-                                <img src="img/logo.png" alt="Logo">
-                            </a>
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 col-md-4">
+                            <div class="b-logo">
+                                <a href="index.html">
+                                    <img src="img/logo.png" alt="Logo">
+                                </a>
+                            </div>
                         </div>
+
+
                     </div>
-                    
-                    
                 </div>
-            </div>
-        </div>*@
+            </div>*@
         <!-- Brand End -->
         <!-- Nav Bar Start -->
-        
         <!-- Nav Bar End -->
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color: #ECECEC">
+
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">News_Site</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                @*<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">News_Site</a>*@
+                <div class="container d-flex">
+                    <a style="width: 300px" href="/" class="navbar-brand active ">
+                        <img src="https://fiek.uni-pr.edu/images/logosmall.png" class="logo">
+                        <br />
+                        <h4 class="font-serif d-block">
+
+                            <span class="text-blue">FIEK News </span>
+                        </h4>
+                    </a>
+                    <h1></h1>
+                </div>
+
+
+
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        
                     </ul>
                     <partial class="navbar-nav flex-grow-1" name="_LoginPartial" />
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div style="overflow: auto; min-height: 100%" class="container-xxl">
         <main role="main" class="pb-3">
             @RenderBody()
+
+            <a href="#" class="back-to-top" style="display: inline;"><i class="fa fa-chevron-up"></i></a>
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - News_Site - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="footer" style="overflow: hidden; background-color: #C70202; ">
+        <div class="footer-links">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4" style="color: #ffff">
+                        <h6 class="footer-title" style="color: #ffff">e-Services</h6>
+                        <ul class="list-unstyled" style="color: #ffff">
+
+                            <li><a style="color: #ffff" href="https://fiek.uni-pr.edu/page.aspx?id=1,63">Projekte</a></li>
+
+                            <li><a style="color: #ffff" href="https://fiek.uni-pr.edu/page.aspx?id=1,69">Statistikat</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="footer-title" style="color: #ffff">Kontakti</h6>
+                        <ul class="list-unstyled">
+                            <li style="color: #ffff">
+                                <strong>Adresa:</strong>
+                                <p style="color: #ffff">Bregu i Diellit, p.n. 10000 Prishtinë, Republika e Kosovës</p>
+                            </li>
+                            <li>
+                                <strong>Telefoni:</strong>
+                                <br>
+                                <a style="color: #ffff" href="tel:+38138554896">+381(0)38 554 896 ext.102</a>
+                                <br>
+                                <a style="color: #ffff" href="fax:+38138542525">Fax. +381(0)38 542 525</a>
+                            </li>
+                            <li>
+                                <strong style="color: #ffff">Email:</strong>
+                                <br>
+                                <a style="color: #ffff" href="mail:juridiku@uni-pr.edu">fiek@uni-pr.edu</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <img src="https://fiek.uni-pr.edu/images/logo_up_white.png" alt="Universiteti i Prishtines - Kosove" class="logo-footer img-fluid">
+                </div>
+            </div>
         </div>
+        <!-- //FOOTER LINKS -->
+
+        <div class="wrapper">
+            <div class="container">
+                <hr>
+                <div class="row">
+                    <div class="col-md-4 navbar navbar-bottom">
+                        <p style="color: #ffff">© All Rights Reserved. Powered by University of Prishtina</p>
+                    </div>
+                    <div class="col-md-8 px-0 px-md-auto">
+                        <!--   <ul class="navbar">
+                               <a href="#">Na Kontakto</a>
+                               <a href="#">Rreth faqes</a>
+                               <a href="#">Politikat e privatesise</a>
+                               <a href="#">Coookie statement</a>
+                               <a href="#">Accessibility Statement</a>
+                           </ul> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // BOTTOM FOOTER -->
     </footer>
+
+
+    <!--<footer class="footer">
+        <div class="footer-links">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h6 class="footer-title">e-Services</h6>
+                        <ul class="list-unstyled">
+
+                            <li><a href="page.aspx?id=1,63">Projekte</a></li>
+
+                            <li><a href="page.aspx?id=1,69">Statistikat</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="footer-title">Kontakti</h6>
+                        <ul class="list-unstyled">
+                            <li>
+                                <strong>Adresa:</strong>
+                                <p>Bregu i Diellit, p.n. 10000 Prishtinë, Republika e Kosovës</p>
+                            </li>
+                            <li>
+                                <strong>Telefoni:</strong>
+                                <br>
+                                <a href="tel:+38138554896">+381(0)38 554 896 ext.102</a>
+                                <br>
+                                <a href="fax:+38138542525">Fax. +381(0)38 542 525</a>
+                            </li>
+                            <li>
+                                <strong>Email:</strong>
+                                <br>
+                                <a href="mail:juridiku@uni-pr.edu">fiek@uni-pr.edu</a>
+                            </li>
+                        </ul>
+                    </div>-->
+    @*<img src="https://fiek.uni-pr.edu/images/logo_up_white.png" alt="Universiteti i Prishtines - Kosove" class="logo-footer img-fluid">*@
+    <!--</div>
+        </div>
+    </div>-->
+    <!-- //FOOTER LINKS -->
+    <!--<div class="footer-bottom">
+        <div class="container">
+            <hr>
+            <div class="row">
+                <div class="col-md-4 ">
+                    <p>© All Rights Reserved. Powered by University of Prishtina</p>
+                </div>
+                <div class="col-md-8 px-0 px-md-auto">-->
+    <!--   <ul class="navbar">
+           <a href="#">Na Kontakto</a>
+           <a href="#">Rreth faqes</a>
+           <a href="#">Politikat e privatesise</a>
+           <a href="#">Coookie statement</a>
+           <a href="#">Accessibility Statement</a>
+       </ul> -->
+    <!--</div>
+            </div>
+        </div>
+    </div>-->
+    <!-- // BOTTOM FOOTER -->
+    <!--</footer>-->
+    @*<footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2022 - News_Site - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>*@
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="js/main.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/slick/slick.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="~/js/main.js"></script>
+
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

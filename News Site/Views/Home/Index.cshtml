@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<News_Site.Models.VM>
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,7 +7,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Bootstrap News Template - Free HTML Templates</title>
+    
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Bootstrap News Template - Free HTML Templates" name="keywords">
     <meta content="Bootstrap News Template - Free HTML Templates" name="description">
@@ -28,148 +29,82 @@
 </head>
 
 <body>
-    <!-- Top Bar Start -->
-    <!--<div class="top-bar">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="tb-contact">
-                        <p><i class="fas fa-envelope"></i>info@mail.com</p>
-                        <p><i class="fas fa-phone-alt"></i>+012 345 6789</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="tb-menu">
-                        <a href="">About</a>
-                        <a href="">Privacy</a>
-                        <a href="">Terms</a>
-                        <a href="">Contact</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
-    <!-- Top Bar Start -->
-    <!-- Brand Start -->
-    <!--<div class="brand">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-3 col-md-4">
-                    <div class="b-logo">
-                        <a href="index.html">
-                            <img src="img/logo.png" alt="Logo">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-4">
-                    <div class="b-ads">
-                        <a href="https://htmlcodex.com">
-                            <img src="img/ads-1.jpg" alt="Ads">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4">
-                    <div class="b-search">
-                        <input type="text" placeholder="Search">
-                        <button><i class="fa fa-search"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
-    <!-- Brand End -->
-    <!-- Nav Bar Start -->
-    <!--<div class="nav-bar">
-        <div class="container">
-            <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                <a href="#" class="navbar-brand">MENU</a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav mr-auto">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                            <div class="dropdown-menu">
-                                <a href="#" class="dropdown-item">Sub Item 1</a>
-                                <a href="#" class="dropdown-item">Sub Item 2</a>
-                            </div>
-                        </div>
-                        <a href="single-page.html" class="nav-item nav-link">Single Page</a>
-                        <a href="contact.html" class="nav-item nav-link">Contact Us</a>
-                    </div>
-                    <div class="social ml-auto">
-                        <a href=""><i class="fab fa-twitter"></i></a>
-                        <a href=""><i class="fab fa-facebook-f"></i></a>
-                        <a href=""><i class="fab fa-linkedin-in"></i></a>
-                        <a href=""><i class="fab fa-instagram"></i></a>
-                        <a href=""><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>-->
-    <!-- Nav Bar End -->
-    <!-- Top News Start-->
-    <div class="top-news">
-        <div class="container">
+    <div class="top-news h-100" >
+        <div class="container-fluid h-100">
             <div class="row">
+                <h1> Lajmet kryesore</h1>
                 <div class="col-md-6 tn-left">
                     <div class="row tn-slider">
-                        <div class="col-md-6">
-                            <div class="tn-img">
-                                <img src="https://telegrafi.com/wp-content/uploads/2022/12/5000-780x439.png" />
-                                <div class="tn-title">
-                                    <a href="https://telegrafi.com/krijohet-roboti-inteligjence-artificiale-qe-shkruan-ese-akademike/">Krijohet roboti me inteligjencë artificiale që shkruan ese akademike</a>
+                        @*<div class="col-md-6">
+                    <div class="tn-img">
+                        <img src="https://telegrafi.com/wp-content/uploads/2022/12/5000-780x439.png" />
+                        <div class="tn-title">
+                            <a href="https://telegrafi.com/krijohet-roboti-inteligjence-artificiale-qe-shkruan-ese-akademike/">Krijohet roboti me inteligjencë artificiale që shkruan ese akademike</a>
+                        </div>
+                    </div>
+                </div>*@
+                        @for (int i = 0; i < 3; i++)
+                        {
+                            <div class="col-md-6">
+                                <div class="tn-img w-100">
+                                    <img class="w-100" height="393" src="@Model[i].Main_photo" />
+                                    <div class="tn-title">
+                                        <a href="@Model[i].URL">@Model[i].Title</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="tn-img">
-                                <img src="https://telegrafi.com/wp-content/uploads/2022/12/c1_2444579-780x439.png" />
-                                <div class="tn-title">
-                                    <a href="https://telegrafi.com/kina-ne-kaos-apple-plane-te-reja-per-zhvendosjen-e-prodhimit-te-iphone/">Integer hendrerit elit eget purus sodales maximus</a>
-                                </div>
-                            </div>
-                        </div>
+                        }
+
                     </div>
                 </div>
                 <div class="col-md-6 tn-right">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="tn-img">
-                                <img src="img/news-350x223-1.jpg" />
-                                <div class="tn-title">
-                                    <a href="">Lorem ipsum dolor sit</a>
+
+                        @for (int i = 3; i < 7; i++)
+                        {
+                            <div class="col-md-6">
+                                <div class="tn-img m-1">
+                                    <img class="w-100" height="190" src="@Model[i].Main_photo" />
+                                    <div class="tn-title">
+                                        <a href="@Model[i].URL">@Model[i].Title</a>
+                                    </div>
                                 </div>
                             </div>
+                        }
+
+                        @*<div class="col-md-6">
+                    <div class="tn-img">
+                        <img src="img/news-350x223-1.jpg" />
+                        <div class="tn-title">
+                            <a href="">Lorem ipsum dolor sit</a>
                         </div>
-                        <div class="col-md-6">
-                            <div class="tn-img">
-                                <img src="img/news-350x223-2.jpg" />
-                                <div class="tn-title">
-                                    <a href="">Lorem ipsum dolor sit</a>
-                                </div>
-                            </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="tn-img">
+                        <img src="img/news-350x223-2.jpg" />
+                        <div class="tn-title">
+                            <a href="">Lorem ipsum dolor sit</a>
                         </div>
-                        <div class="col-md-6">
-                            <div class="tn-img">
-                                <img src="img/news-350x223-3.jpg" />
-                                <div class="tn-title">
-                                    <a href="">Lorem ipsum dolor sit</a>
-                                </div>
-                            </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="tn-img">
+                        <img src="img/news-350x223-3.jpg" />
+                        <div class="tn-title">
+                            <a href="">Lorem ipsum dolor sit</a>
                         </div>
-                        <div class="col-md-6">
-                            <div class="tn-img">
-                                <img src="img/news-350x223-4.jpg" />
-                                <div class="tn-title">
-                                    <a href="">Lorem ipsum dolor sit</a>
-                                </div>
-                            </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="tn-img">
+                        <img src="img/news-350x223-4.jpg" />
+                        <div class="tn-title">
+                            <a href="">Lorem ipsum dolor sit</a>
                         </div>
+                    </div>
+                </div>*@
                     </div>
                 </div>
             </div>
@@ -184,15 +119,29 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
-                        <div class="col-md-4">
+                        <h1> Lajmet e tjera</h1>
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            <div class="col-md-4">
+                                <div class="mn-img">
+                                    <img height="216" src="@Model[i].Main_photo" />
+                                    <div class="mn-title">
+                                        <a href="@Model[i].URL">@Model[i].Title</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+
+                        @*<div class="col-md-4">
                             <div class="mn-img">
                                 <img src="img/news-350x223-1.jpg" />
                                 <div class="mn-title">
                                     <a href="">Lorem ipsum dolor sit</a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
+                        </div>*@
+                        @*<div class="col-md-4">
                             <div class="mn-img">
                                 <img src="img/news-350x223-2.jpg" />
                                 <div class="mn-title">
@@ -247,15 +196,15 @@
                                     <a href="">Lorem ipsum dolor sit</a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
+                        </div>*@
+                        @*<div class="col-md-4">
                             <div class="mn-img">
                                 <img src="img/news-350x223-4.jpg" />
                                 <div class="mn-title">
                                     <a href="">Lorem ipsum dolor sit</a>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
 
@@ -266,7 +215,7 @@
     <!-- Main News End-->
     <!-- Footer Start -->
 
-    <div class="tab-news">
+    @*<div class="tab-news">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -460,27 +409,17 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
 
-    
+
     <!-- Footer End -->
     <!-- Footer Menu Start -->
-    
     <!-- Footer Menu End -->
     <!-- Footer Bottom Start -->
-    
     <!-- Footer Bottom End -->
     <!-- Back to Top -->
-    
-
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/slick/slick.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    
 </body>
 </html>
 
