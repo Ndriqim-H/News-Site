@@ -15,6 +15,7 @@ namespace News_Site.Controllers
 
         public IActionResult Index()
         {
+            
             return View();
         }
 
