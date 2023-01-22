@@ -1,0 +1,61 @@
+﻿@model News_Site.Areas.Identity.Pages.Account.LoginModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    
+*@
+@{ 
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <section>
+            <form id="account" method="post" asp-area="Identity" asp-page="/Account/Login" >
+                
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <label asp-for="Input.Email" class="form-label">Llogaria</label>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                    <label asp-for="Input.Password" class="form-label">Fjalëkalimi</label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                
+                <div>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Kyquni</button>
+                </div>
+
+            </form>
+        </section>
+    </div>
+</div>
+
+    <script>
+        //$("#account").submit((form) => {
+        //    debugger;
+        //    form.preventDefault();
+        //    var obj = { Email: $("#Input_Email").val(), Password: $("#Input_Password").val() };
+        //    $.ajax({
+        //        type: "POST",
+        //        url: "/Identity/Account/Login",
+        //        data: { Input_Email: $("#Input_Email").val(), Input_Password: $("#Input_Password").val() },
+        //        success: function (response) {
+        //            debugger;
+        //            $("#exampleModal").find(".modal-body").html(response);
+        //            //$("#partialModal").modal('show');
+        //        },
+        //        failure: function (response) {
+        //            debugger;
+        //            alert(response.responseText);
+        //        },
+        //        error: function (response) {
+        //            debugger;
+        //            alert(response.responseText);
+        //        }
+        //    });
+        //})
+    </script>
+

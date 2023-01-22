@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/News_Site.styles.css" asp-append-version="true" />
     <link href="~/lib/slick/slick.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <style>
         #page-container {
             position: relative;
@@ -103,6 +104,26 @@
     </style>
 </head>
 <body style="background-color: #ffff">
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Qasja si administrator</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
     <header>
 
         <!-- Top Bar Start -->
@@ -172,7 +193,7 @@
             </div>
         </nav>
     </header>
-    <div style="overflow: auto; min-height: 100%" class="container-xxl">
+    <div style="overflow: auto; min-height: 100%;" class="container-xxl">
         <main role="main" class="pb-3">
             @RenderBody()
 
@@ -180,7 +201,7 @@
         </main>
     </div>
 
-    <footer class="footer" style="overflow: hidden; background-color: #C70202; ">
+    <footer class="footer" style="overflow: hidden; background-color: #C70202; left: 0">
         <div class="footer-links">
             <div class="container">
                 <div class="row">
@@ -325,7 +346,34 @@
     <!-- Template Javascript -->
     <script src="~/js/main.js"></script>
 
+    <script>
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            
+            
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
 
+            $.ajax({
+                type: "POST",
+                url: "/Home/_LoginPartial1",
+
+                success: function (response) {
+                    $("#exampleModal").find(".modal-body").html(response);
+                    //$("#partialModal").modal('show');
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+
+            
+        })
+
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

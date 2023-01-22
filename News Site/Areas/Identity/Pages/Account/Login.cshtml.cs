@@ -65,7 +65,7 @@ namespace News_Site.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Required]
-            [EmailAddress]
+            //[EmailAddress]
             public string Email { get; set; }
 
             /// <summary>
@@ -106,6 +106,7 @@ namespace News_Site.Areas.Identity.Pages.Account
             returnUrl ??= Url.Content("~/");
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            JsonResult json = new JsonResult(new { success = false, message = "Invalid login attempt." });
 
             if (ModelState.IsValid)
             {
@@ -129,12 +130,15 @@ namespace News_Site.Areas.Identity.Pages.Account
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return Page();
+                    
+                    //return json;
+                    return LocalRedirect(returnUrl);
                 }
             }
 
             // If we got this far, something failed, redisplay form
-            return Page();
+            return LocalRedirect(returnUrl);
+            //return json;
         }
     }
 }
