@@ -11,6 +11,8 @@ using System.Text.Json;
 using System.Linq;
 using News_Site.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace News_Site.Controllers
 {
@@ -18,20 +20,21 @@ namespace News_Site.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly NewsSiteContext _context;
+        private readonly SignInManager<IdentityUser> _signInManager;
 
-
-        public HomeController(ILogger<HomeController> logger, NewsSiteContext context)
+        public HomeController(ILogger<HomeController> logger, NewsSiteContext context, SignInManager<IdentityUser> signInManager)
         {
+            _signInManager = signInManager;
             _logger = logger;
             _context = context;
         }
-        
+
 
         public async Task<IActionResult> Index()
         {
             var articles = await _context.Articles.ToListAsync();
-            List<string> keywords = await _context.TargetKeywords.Select(t=>t.Name).ToListAsync();
-            
+            List<string> keywords = await _context.TargetKeywords.Select(t => t.Name).ToListAsync();
+
             List<News> news = new();
             using (StreamReader r = new StreamReader("Kallxo.json"))
             {
@@ -74,8 +77,110 @@ namespace News_Site.Controllers
             return PartialView();
         }
 
-        
 
+        public async Task<IActionResult> Login(string Username, string Password)
+        {
+            JsonResult json = new JsonResult(new { success = false, message = "Invalid login attempt." });
+            var result = await _signInManager.PasswordSignInAsync(Username, Password, false, lockoutOnFailure: false);
+            if (result.Succeeded)
+            {
+                json = new JsonResult(new { success = true, message = "Invalid login attempt." });
+
+                _logger.LogInformation("User logged in.");
+                return json;
+            }
+            else
+                return json;
+        }
+
+        public async Task<IActionResult> ConfigKeywords()
+        {
+            var keywords = await _context.TargetKeywords.Select(t => t.Name).ToListAsync();
+            Keywords model = new()
+            {
+                KeywordsStr = string.Join(", ", keywords)
+            };
+
+
+            return PartialView("ConfigKeywords", model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ConfigKeywords(Keywords keywords)
+        {
+            var keywordsList = keywords.KeywordsStr.Split(',').Select(t => t.Trim()).ToList();
+
+            using (IDbContextTransaction transaction = _context.Database.BeginTransaction())
+            {
+                try
+                {
+                    var keywordsDb = await _context.TargetKeywords.ToListAsync();
+                    foreach (var keyword in keywordsDb)
+                    {
+                        if (!keywordsList.Contains(keyword.Name))
+                        {
+                            _context.TargetKeywords.Remove(keyword);
+                        }
+                    }
+                    foreach (var keyword in keywordsList)
+                    {
+                        if (!keywordsDb.Select(t => t.Name).Contains(keyword))
+                        {
+                            _context.TargetKeywords.Add(new TargetKeyword { Name = keyword });
+                        }
+                    }
+                    await _context.SaveChangesAsync();
+
+                    var articles = await _context.Articles.ToListAsync();
+                    articles.ForEach(t => t.Rank = FindRank(t.Title, t.Content));
+                    await _context.SaveChangesAsync();
+                    transaction.Commit();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    Console.WriteLine("Error occurred.");
+                    throw;
+                }
+                
+            }
+            
+            
+        }
+
+
+        public int FindRank(string title, string content)
+        {
+            var keywords = _context.TargetKeywords.Select(t=> t.Name).ToList();
+            double rank = 0;
+            double priorityCoefficient = 10;
+            title = title.ToLower();
+            content = content.ToLower();
+            foreach (var keyword in keywords)
+            {
+                if (!title.Contains(keyword) || !content.Contains(keyword))
+                {
+                    continue;
+                }
+                else if (title.Contains(keyword) && !content.Contains(keyword))
+                {
+                    rank += Regex.Matches(title, keyword).Count / title.Length;
+                    rank *= priorityCoefficient;
+                }
+                else if (!title.Contains(keyword) && content.Contains(keyword))
+                {
+                    rank += Regex.Matches(content, keyword).Count / content.Length;
+                }
+                else if (title.Contains(keyword) && content.Contains(keyword))
+                {
+                    rank += Regex.Matches(title, keyword).Count;
+                    rank += Regex.Matches(content, keyword).Count;
+                    rank *= priorityCoefficient;
+                }
+            }
+            return (int)rank;
+        }
         public IActionResult Privacy()
         {
             return View();

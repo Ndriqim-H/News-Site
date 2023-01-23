@@ -1,0 +1,22 @@
+﻿@model News_Site.Models.Keywords
+@{ 
+    Layout = null;
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="ConfigKeywords">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="KeywordsStr" class="control-label"></label>
+                @Html.TextAreaFor(m=>m.KeywordsStr, new { @class = "form-control" })
+                @*<input type="text" asp-for="KeywordsStr" class="form-control" />*@
+                <span asp-validation-for="KeywordsStr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Konfiguro" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

@@ -6,10 +6,18 @@
     @if (SignInManager.IsSignedIn(User))
     {
         @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@@mdo">Open modal for @@mdo</button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@@fat">Open modal for @@fat</button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@@getbootstrap">Open modal for @@getbootstrap</button>*@
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Çkemi @User.Identity?.Name!</a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@@fat">Open modal for @@fat</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@@getbootstrap">Open modal for @@getbootstrap</button>*@
+    <li class="nav-item">
+        @*<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Çkemi @User.Identity?.Name!</a>*@
+        <a class="nav-link text-dark" href="#" title="Admin">Çkemi @User.Identity?.Name!</a>
+    </li>
+        <li>
+            <form class="form-inline" asp-controller="Home" asp-action="ConfigKeywords" method="get">
+                <button type="button" title="Kofiguro fjalët kyçe" data-toggle="modal" data-target="#exampleModal1" class="nav-link btn-link border-0">
+                    <img alt="Konfigurimi!" width="20" src="~/Settings Icon.svg" />
+                </button>
+            </form>
         </li>
         <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
@@ -22,12 +30,18 @@
         @*<li class="nav-item">
                 <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
             </li>*@
-<li class="nav-item">
-    @*<a class="nav-link text-dark " asp-area="Identity" asp-page="/Account/Login">Login</a>*@
-    <form class="form-inline" asp-area="Identity" asp-page="/Account/Login">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Kyquni</button>
-        @*<button type="submit" class="btn btn-link text">Kyquni</button>*@
-    </form>
-</li>
+        <li class="nav-item">
+            @*<a class="nav-link text-dark " asp-area="Identity" asp-page="/Account/Login">Login</a>*@
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Login">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Kyquni</button>
+                @*<button type="submit" class="btn btn-link text">Kyquni</button>*@
+            </form>
+        </li>
     }
 </ul>
+
+@section Scripts{
+    <script>
+
+    </script>
+}
