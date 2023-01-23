@@ -3,7 +3,6 @@
     
     // Sticky Navbar
     $(window).scroll(function () {
-        debugger;
         if ($(this).scrollTop() > 150) {
             $('.navbar').addClass('nav-sticky');
         } else {

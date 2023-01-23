@@ -6,9 +6,9 @@
     <title>@ViewData["Title"] - Fiek News</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/News_Site.styles.css" asp-append-version="true" />
+    @*<link rel="stylesheet" href="~/News_Site.styles.css" asp-append-version="true" />*@
     <link href="~/lib/slick/slick.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
     <style>
         #page-container {
             position: relative;
@@ -123,7 +123,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -144,52 +144,9 @@
     </div>
 
     <header>
-
-        <!-- Top Bar Start -->
-        @*<div class="top-bar">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="tb-contact">
-                                <p><i class="fas fa-envelope"></i>info@mail.com</p>
-                                <p><i class="fas fa-phone-alt"></i>+012 345 6789</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="tb-menu">
-                                <a href="">About</a>
-                                <a href="">Privacy</a>
-                                <a href="">Terms</a>
-                                <a href="">Contact</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>*@
-        <!-- Top Bar Start -->
-        <!-- Brand Start -->
-        @*<div class="brand">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-3 col-md-4">
-                            <div class="b-logo">
-                                <a href="index.html">
-                                    <img src="img/logo.png" alt="Logo">
-                                </a>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>*@
-        <!-- Brand End -->
-        <!-- Nav Bar Start -->
-        <!-- Nav Bar End -->
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color: #ECECEC">
 
             <div class="container-fluid">
-                @*<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">News_Site</a>*@
                 <div class="container d-flex">
                     <a style="width: 300px" href="/" class="navbar-brand active ">
                         <img src="https://fiek.uni-pr.edu/images/logosmall.png" class="logo">
@@ -269,101 +226,27 @@
                         <p style="color: #ffff">© All Rights Reserved. Powered by University of Prishtina</p>
                     </div>
                     <div class="col-md-8 px-0 px-md-auto">
-                        <!--   <ul class="navbar">
-                               <a href="#">Na Kontakto</a>
-                               <a href="#">Rreth faqes</a>
-                               <a href="#">Politikat e privatesise</a>
-                               <a href="#">Coookie statement</a>
-                               <a href="#">Accessibility Statement</a>
-                           </ul> -->
                     </div>
                 </div>
             </div>
         </div>
         <!-- // BOTTOM FOOTER -->
     </footer>
-
-
-    <!--<footer class="footer">
-        <div class="footer-links">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <h6 class="footer-title">e-Services</h6>
-                        <ul class="list-unstyled">
-
-                            <li><a href="page.aspx?id=1,63">Projekte</a></li>
-
-                            <li><a href="page.aspx?id=1,69">Statistikat</a></li>
-
-                        </ul>
-                    </div>
-                    <div class="col-md-4">
-                        <h6 class="footer-title">Kontakti</h6>
-                        <ul class="list-unstyled">
-                            <li>
-                                <strong>Adresa:</strong>
-                                <p>Bregu i Diellit, p.n. 10000 Prishtinë, Republika e Kosovës</p>
-                            </li>
-                            <li>
-                                <strong>Telefoni:</strong>
-                                <br>
-                                <a href="tel:+38138554896">+381(0)38 554 896 ext.102</a>
-                                <br>
-                                <a href="fax:+38138542525">Fax. +381(0)38 542 525</a>
-                            </li>
-                            <li>
-                                <strong>Email:</strong>
-                                <br>
-                                <a href="mail:juridiku@uni-pr.edu">fiek@uni-pr.edu</a>
-                            </li>
-                        </ul>
-                    </div>-->
-    @*<img src="https://fiek.uni-pr.edu/images/logo_up_white.png" alt="Universiteti i Prishtines - Kosove" class="logo-footer img-fluid">*@
-    <!--</div>
-        </div>
-    </div>-->
-    <!-- //FOOTER LINKS -->
-    <!--<div class="footer-bottom">
-        <div class="container">
-            <hr>
-            <div class="row">
-                <div class="col-md-4 ">
-                    <p>© All Rights Reserved. Powered by University of Prishtina</p>
-                </div>
-                <div class="col-md-8 px-0 px-md-auto">-->
-    <!--   <ul class="navbar">
-           <a href="#">Na Kontakto</a>
-           <a href="#">Rreth faqes</a>
-           <a href="#">Politikat e privatesise</a>
-           <a href="#">Coookie statement</a>
-           <a href="#">Accessibility Statement</a>
-       </ul> -->
-    <!--</div>
-            </div>
-        </div>
-    </div>-->
-    <!-- // BOTTOM FOOTER -->
-    <!--</footer>-->
-    @*<footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2022 - News_Site - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-        </footer>*@
-
+    <script src="~/js/jquery.min.js"></script>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="js/main.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/slick/slick.min.js"></script>
+    <script src="~/lib/easing/easing.min.js"></script>
 
+    <script src="~/lib/slick/slick.min.js"></script>
     <!-- Template Javascript -->
     <script src="~/js/main.js"></script>
+
+    
 
     <script>
         $('#exampleModal').on('show.bs.modal', function (event) {

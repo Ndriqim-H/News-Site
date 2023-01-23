@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    
+
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Bootstrap News Template - Free HTML Templates" name="keywords">
     <meta content="Bootstrap News Template - Free HTML Templates" name="description">
@@ -25,28 +25,57 @@
     <link href="lib/slick/slick-theme.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    
+    <style>
+        .cont {
+            width: 100%;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            justify-content: flex-start;
+        }
+
+        .my-news{
+            width: 100%;
+        }
+
+        .pagination {
+            padding: 20px;
+        }
+
+        .pagination, .pagination * {
+            user-select: none;
+        }
+
+        .pagination a {
+            display: inline-block;
+            padding: 0 10px;
+            cursor: pointer;
+        }
+
+        .pagination a.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+
+        .pagination a.current {
+            background: #f3f3f3;
+        }
+
+    </style>
+
 </head>
 
 <body>
-
-    
-
-
     <div class="top-news h-100">
         <div class="container-fluid h-100">
             <div class="row">
                 <h1> Lajmet kryesore</h1>
                 <div class="col-md-6 tn-left">
                     <div class="row tn-slider">
-                        @*<div class="col-md-6">
-                                <div class="tn-img">
-                                    <img src="https://telegrafi.com/wp-content/uploads/2022/12/5000-780x439.png" />
-                                    <div class="tn-title">
-                                        <a href="https://telegrafi.com/krijohet-roboti-inteligjence-artificiale-qe-shkruan-ese-akademike/">Krijohet roboti me inteligjencë artificiale që shkruan ese akademike</a>
-                                    </div>
-                                </div>
-                            </div>*@
                         @for (int i = 0; i < 3; i++)
                         {
                             <div class="col-md-6">
@@ -75,57 +104,21 @@
                                 </div>
                             </div>
                         }
-
-                        @*<div class="col-md-6">
-                                <div class="tn-img">
-                                    <img src="img/news-350x223-1.jpg" />
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="tn-img">
-                                    <img src="img/news-350x223-2.jpg" />
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="tn-img">
-                                    <img src="img/news-350x223-3.jpg" />
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="tn-img">
-                                    <img src="img/news-350x223-4.jpg" />
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>*@
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Top News End-->
-    <!-- Category News Start-->
-    <!-- Tab News Start-->
-    <!-- Main News Start-->
+
     <div class="main-news">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="row">
+                    <div id ="demo1" class="row">
                         <h1> Lajmet e tjera</h1>
-                        @for (int i = 0; i < Model.Count; i++)
+                        @for (int i = 7; i < Model.Count; i++)
                         {
-                            <div class="col-md-4">
+                            <div class="col-md-4 my-news">
                                 <div class="mn-img">
                                     <img height="216" src="@Model[i].Main_photo" />
                                     <div class="mn-title">
@@ -134,80 +127,6 @@
                                 </div>
                             </div>
                         }
-
-
-                        @*<div class="col-md-4">
-                                <div class="mn-img">
-                                    <img src="img/news-350x223-1.jpg" />
-                                    <div class="mn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>*@
-                        @*<div class="col-md-4">
-                                <div class="mn-img">
-                                    <img src="img/news-350x223-2.jpg" />
-                                    <div class="mn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mn-img">
-                                    <img src="img/news-350x223-3.jpg" />
-                                    <div class="mn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mn-img">
-                                    <img src="img/news-350x223-4.jpg" />
-                                    <div class="mn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mn-img">
-                                    <img src="img/news-350x223-5.jpg" />
-                                    <div class="mn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mn-img">
-                                    <img src="img/news-350x223-1.jpg" />
-                                    <div class="mn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mn-img">
-                                    <img src="img/news-350x223-2.jpg" />
-                                    <div class="mn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mn-img">
-                                    <img src="img/news-350x223-3.jpg" />
-                                    <div class="mn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>*@
-                        @*<div class="col-md-4">
-                                <div class="mn-img">
-                                    <img src="img/news-350x223-4.jpg" />
-                                    <div class="mn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>*@
                     </div>
                 </div>
 
@@ -215,212 +134,165 @@
             </div>
         </div>
     </div>
-    <!-- Main News End-->
-    <!-- Footer Start -->
-    @*<div class="tab-news">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <ul class="nav nav-pills nav-justified">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="pill" href="#featured">Featured News</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="pill" href="#popular">Popular News</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="pill" href="#latest">Latest News</a>
-                            </li>
-                        </ul>
+    @section Scripts{
 
-                        <div class="tab-content">
-                            <div id="featured" class="container tab-pane active">
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-1.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-2.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-3.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="popular" class="container tab-pane fade">
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-4.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-5.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-1.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="latest" class="container tab-pane fade">
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-2.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-3.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-4.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <script>
+            (function ($) {
+                var pagify = {
+                    items: {},
+                    container: null,
+                    totalPages: 1,
+                    perPage: 3,
+                    currentPage: 0,
+                    createNavigation: function () {
+                        this.totalPages = Math.ceil(this.items.length / this.perPage);
 
-                    <div class="col-md-6">
-                        <ul class="nav nav-pills nav-justified">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="pill" href="#m-viewed">Most Viewed</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="pill" href="#m-read">Most Read</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="pill" href="#m-recent">Most Recent</a>
-                            </li>
-                        </ul>
+                        $('.pagination', this.container.parent()).remove();
+                        var pagination = $('<div class="pagination"></div>').append('<a class="nav prev disabled" data-next="false"><</a>');
 
-                        <div class="tab-content">
-                            <div id="m-viewed" class="container tab-pane active">
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-5.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-4.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-3.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="m-read" class="container tab-pane fade">
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-2.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-1.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-3.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="m-recent" class="container tab-pane fade">
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-4.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-5.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                                <div class="tn-news">
-                                    <div class="tn-img">
-                                        <img src="img/news-350x223-1.jpg" />
-                                    </div>
-                                    <div class="tn-title">
-                                        <a href="">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>*@
+                        for (var i = 0; i < this.totalPages; i++) {
+                            var pageElClass = "page";
+                            if (!i)
+                                pageElClass = "page current";
+                            var pageEl = '<a class="' + pageElClass + '" data-page="' + (
+                                i + 1) + '">' + (
+                                    i + 1) + "</a>";
+                            pagination.append(pageEl);
+                        }
+                        pagination.append('<a class="nav next" data-next="true">></a>');
 
+                        this.container.after(pagination);
 
-    <!-- Footer End -->
-    <!-- Footer Menu Start -->
-    <!-- Footer Menu End -->
-    <!-- Footer Bottom Start -->
-    <!-- Footer Bottom End -->
-    <!-- Back to Top -->
-    <!-- JavaScript Libraries -->
+                        var that = this;
+                        $("body").off("click", ".nav");
+                        this.navigator = $("body").on("click", ".nav", function () {
+                            var el = $(this);
+                            that.navigate(el.data("next"));
+                        });
+
+                        $("body").off("click", ".page");
+                        this.pageNavigator = $("body").on("click", ".page", function () {
+                            var el = $(this);
+                            that.goToPage(el.data("page"));
+                        });
+                    },
+                    navigate: function (next) {
+                        // default perPage to 5
+                        if (isNaN(next) || next === undefined) {
+                            next = true;
+                        }
+                        $(".pagination .nav").removeClass("disabled");
+                        if (next) {
+                            this.currentPage++;
+                            if (this.currentPage > (this.totalPages - 1))
+                                this.currentPage = (this.totalPages - 1);
+                            if (this.currentPage == (this.totalPages - 1))
+                                $(".pagination .nav.next").addClass("disabled");
+                        }
+                        else {
+                            this.currentPage--;
+                            if (this.currentPage < 0)
+                                this.currentPage = 0;
+                            if (this.currentPage == 0)
+                                $(".pagination .nav.prev").addClass("disabled");
+                        }
+
+                        this.showItems();
+                    },
+                    updateNavigation: function () {
+
+                        var pages = $(".pagination .page");
+                        pages.removeClass("current");
+                        $('.pagination .page[data-page="' + (
+                            this.currentPage + 1) + '"]').addClass("current");
+                    },
+                    goToPage: function (page) {
+
+                        this.currentPage = page - 1;
+
+                        $(".pagination .nav").removeClass("disabled");
+                        if (this.currentPage == (this.totalPages - 1))
+                            $(".pagination .nav.next").addClass("disabled");
+
+                        if (this.currentPage == 0)
+                            $(".pagination .nav.prev").addClass("disabled");
+                        this.showItems();
+                    },
+                    showItems: function () {
+                        this.items.hide();
+                        var base = this.perPage * this.currentPage;
+                        this.items.slice(base, base + this.perPage).show();
+
+                        this.updateNavigation();
+                    },
+                    init: function (container, items, perPage) {
+                        this.container = container;
+                        this.currentPage = 0;
+                        this.totalPages = 1;
+                        this.perPage = perPage;
+                        this.items = items;
+                        this.createNavigation();
+                        this.showItems();
+                    }
+                };
+
+                // stuff it all into a jQuery method!
+                $.fn.pagify = function (perPage, itemSelector) {
+                    var el = $(this);
+                    var items = $(itemSelector, el);
+
+                    // default perPage to 5
+                    if (isNaN(perPage) || perPage === undefined) {
+                        perPage = 5;
+                    }
+
+                    // don't fire if fewer items than perPage
+                    if (items.length <= perPage) {
+                        return true;
+                    }
+
+                    pagify.init(el, items, perPage);
+                };
+            })(jQuery);
+
+            $("#demo1").pagify(15, ".my-news");
+
+        </script>
+        <script>
+            @*$('#demo').pagination({
+                dataSource: @Html.Raw(Json.Serialize(Model)),
+                pageSize: 5,
+                pageRange: null,
+                showPageNumbers: true,
+                callback: function (data, pagination) {
+                    // template method of yourself
+                    debugger;
+                    var html = ''
+                    for (var i = 0; i < data.length; i++) {
+                        //html += '<div class="col-md-4">' +
+                        //    +'<div class="mn-img">' +
+                        //    +'<img height="216" src="' + data[i].main_photo + '" />' +
+                        //    +'<div class="mn-title">' +
+                        //    +'<a href="' + data[i].url + '" title="' + data[i].title + '">' + data[i].title + '</a>' +
+                        //    +'</div></div> </div>'
+                        $('#demo').append('<div class="col-md-4"><div class="mn-img"><img height="216" src="' + data[i].main_photo + '" /><div class="mn-title"><a href="' + data[i].url +'" title="'+data[i].title+'">'+data[i].title+'</a></div></div></div>');
+                    }
+
+                    //$('#demo').html(html);
+                }
+            })*@
+
+            @*pagify({
+                items: @Html.Raw(Json.Serialize(Model)),
+                container: $('#demo'),
+                totalPages: 10,
+                perPage: 5,
+
+                })*@
+
+        </script>
+
+    }
 
 </body>
 </html>
