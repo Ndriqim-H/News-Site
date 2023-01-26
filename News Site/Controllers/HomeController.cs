@@ -32,19 +32,8 @@ namespace News_Site.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var articles = await _context.Articles.ToListAsync();
-            List<string> keywords = await _context.TargetKeywords.Select(t => t.Name).ToListAsync();
-
-            List<News> news = new();
-            using (StreamReader r = new StreamReader("Kallxo.json"))
-            {
-
-
-                string json = r.ReadToEnd();
-                news = JsonSerializer.Deserialize<List<News>>(json);
-            }
-            var x = DateTime.Parse(news[0].Posted_at);
-
+            var articles = await _context.Articles.Where(t=>t.Rank>0).ToListAsync();
+            
             List<VM> vm = articles.Select(t => new VM
             {
                 Created = t.PostedAt.Value,
@@ -53,17 +42,7 @@ namespace News_Site.Controllers
                 Rank = t.Rank.Value,
                 URL = t.Url,
             }).ToList();
-            //List<News> news = System.IO.File.ReadAllLines("Kallxo.csv")
-            //.Skip(1)
-            //.Select(News.FromCSV)
-            //.ToList();
-
-            //for (int i = 0; i < news.Count; i++)
-            //{
-            //    MatchCollection matches = Regex.Matches(news[i].Content, @"\b[\w'\.]*\b");
-            //    vm[i].Rank += (matches.Where(match => keywords.Contains(match.Value))).Count();
-            //    vm[i].Rank = (vm[i].Rank / matches.Count) * Math.Exp(-1 * ((DateTime.Now - vm[i].Created).TotalDays));
-            //}
+            
             vm.ForEach(t => t.Rank *= Math.Exp(-1 * (DateTime.Now - t.Created).TotalDays));
             //
             //news.ForEach(t=>t.Rank = )
